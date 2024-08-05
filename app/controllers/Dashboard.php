@@ -5,8 +5,9 @@ class Dashboard extends Controller {
     public function index()
     {
         $data['judul'] = 'Dashboard';
+        $data['products'] = $this->model('Product_model')->getProductWisata();
         $this->view('templates/admin/header', $data);
-        $this->view('dashboard/index');
+        $this->view('dashboard/index', $data);
         $this->view('templates/admin/footer');
     }
 
