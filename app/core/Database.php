@@ -80,4 +80,10 @@ class Database {
         return $this->stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    // Untuk menghitung ada berapa baris yang berubah di kolomnya
+    public function rowCount()
+    {
+        return $this->stmt->rowCount();
+    }
+
 }
