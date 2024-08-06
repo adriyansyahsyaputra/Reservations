@@ -1,9 +1,8 @@
 <?php
 
-class Product_model
-{
+class Galery_model {
 
-    private $tableWisata = 'paket_wisata';
+    private $tableGalery = 'galery';
     private $db;
 
     public function __construct()
@@ -11,23 +10,26 @@ class Product_model
         $this->db = new Database;
     }
 
-    // Mengambil data dari tabel paket_wisata
-    public function getProductWisata()
+    
+    // Mengambil data dari tabel galery
+    public function getGalery()
     {
-        $this->db->query('SELECT * FROM ' . $this->tableWisata);
+        $this->db->query('SELECT * FROM ' . $this->tableGalery);
         return $this->db->resultSet();
     }
 
-    // Fungsi untuk menambah data wisata
-    public function tambahDataWisata($data)
+
+    
+    // Fungsi untuk menambah data galery
+    public function tambahDataGalery($data)
     {
-        $query = "INSERT INTO paket_wisata VALUES
-                ('', :nama, :deskripsi, :gambar)
+        $query = "INSERT INTO galery VALUES
+                ('', :nama, :youtube, :gambar)
                 ";
 
         $this->db->query($query);
         $this->db->bind('nama', $data['nama']);
-        $this->db->bind('deskripsi', $data['deskripsi']);
+        $this->db->bind('youtube', $data['youtube']);
         $this->db->bind('gambar', $data['gambar']);
 
         $this->db->execute();
@@ -36,9 +38,9 @@ class Product_model
     }
 
     // Fungsi untuk menghapus data wisata
-    public function hapusDataWisata($id)
+    public function hapusDataGalery($id)
     {
-        $query = "DELETE FROM paket_wisata WHERE id = :id";
+        $query = "DELETE FROM galery WHERE id = :id";
         $this->db->query($query);
         $this->db->bind('id', $id);
 
